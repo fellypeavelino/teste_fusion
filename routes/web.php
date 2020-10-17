@@ -18,5 +18,9 @@ Route::get('/', function () {
     return redirect()->route('motoristas.index');
 });
 
-// Route::get('/', [MotoristaController::class, 'index']);
 Route::resource('motoristas', MotoristaController::class);
+Route::prefix('motorista')->group(function () {
+    Route::any('teste', [MotoristaController::class, 'teste']);
+    Route::any('index', [MotoristaController::class, 'index']);
+});
+

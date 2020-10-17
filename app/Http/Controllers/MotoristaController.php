@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Motorista;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MotoristaController extends Controller
 {
@@ -112,5 +113,18 @@ class MotoristaController extends Controller
     
         return redirect()->route('motoristas.index')
                         ->with('success','Motorista deletado com sucesso');
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function teste()
+    {
+        // return "teste";
+        $results = DB::select("SELECT * FROM motoristas");
+
+        return view('motoristas.teste',compact('results'));
     }
 }
